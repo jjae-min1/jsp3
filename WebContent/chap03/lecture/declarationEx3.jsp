@@ -12,7 +12,7 @@ Set<Integer> genLotto() {
 	return lotto;
 }
 %>
-
+ 
 <%!
 String colorClass(int num){
 	return "lotto-color" + (num % 10) * 10;
