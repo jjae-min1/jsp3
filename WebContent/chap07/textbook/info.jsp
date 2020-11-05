@@ -13,15 +13,22 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h1>path</h1>
-<a href="<%= request.getContextPath()%>/chap04/lecture/contextPathEx2.jsp">other file</a>
-<!-- webcontent경로라 getContextPath메소드의 리턴값이 /로 시작 (절대 경로)-->
+
+<table width="100%" border="1" cellpadding="0" cellspacing="0">
+<tr>
+	<td>제품번호</td> <td>xxxx</td>
+</tr>
+<tr>
+	<td>가격</td> <td>10000원</td>
+</tr>
+</table>
+ 
+ 
+ 
+<jsp:include page="infoSub.jsp">
+	<jsp:param name="type" value="A"></jsp:param>
+</jsp:include>
 
 
-<a href="contextPathEx2.jsp">other file 2</a> 
-<!-- 상대경로 (현재 url에서 맨뒷 슬레시 이후의 값들을 변경시켜줌) -->
-
-<a href="<%= request.getContextPath() %>/chap04/lecture/subfolder/pathEx1.jsp">절대경로</a>
-<a href="subfolder/pathEx1.jsp">상대경로</a>
 </body>
 </html>

@@ -13,15 +13,12 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h1>path</h1>
-<a href="<%= request.getContextPath()%>/chap04/lecture/contextPathEx2.jsp">other file</a>
-<!-- webcontent경로라 getContextPath메소드의 리턴값이 /로 시작 (절대 경로)-->
+<h1>bodyEx2
+request 참조값 : <%= System.identityHashCode(request) %>
+</h1>
+
+<jsp:include page="navbarEx2.jsp"></jsp:include>
 
 
-<a href="contextPathEx2.jsp">other file 2</a> 
-<!-- 상대경로 (현재 url에서 맨뒷 슬레시 이후의 값들을 변경시켜줌) -->
-
-<a href="<%= request.getContextPath() %>/chap04/lecture/subfolder/pathEx1.jsp">절대경로</a>
-<a href="subfolder/pathEx1.jsp">상대경로</a>
 </body>
 </html>

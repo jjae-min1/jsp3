@@ -2,6 +2,8 @@
     pageEncoding="EUC-KR"%>
 <%@ page import = "java.util.*" %>
 <%@ page buffer="1kb"  autoFlush="true"%>
+
+
 <!-- buffer : 임시 저장공간(톰켓에서 버퍼에 요청한 정보를 쌓아두다가 버퍼가 가득
               차면 내보냄), page 디렉티브로 버퍼크기 선언 가능 -->
               

@@ -13,15 +13,18 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h1>path</h1>
-<a href="<%= request.getContextPath()%>/chap04/lecture/contextPathEx2.jsp">other file</a>
-<!-- webcontent경로라 getContextPath메소드의 리턴값이 /로 시작 (절대 경로)-->
+
+<!-- 액션태그 : 역할을 수행하는 태그 -->
+<!-- 디렉티브와 차이는 해당파일을 실행후 servlet으로 넘김 -->
+<jsp:include page="navbarEx1.jsp"></jsp:include>
+<div class="container">
+	<h1>액션 태그 본문</h1>
+</div>
 
 
-<a href="contextPathEx2.jsp">other file 2</a> 
-<!-- 상대경로 (현재 url에서 맨뒷 슬레시 이후의 값들을 변경시켜줌) -->
+<%-- <%= str %> --%>
+<!-- navbar파일 내에 str라는 변수를 선언했지만 본 파일에서는 해당변수 사용 불가 -->
 
-<a href="<%= request.getContextPath() %>/chap04/lecture/subfolder/pathEx1.jsp">절대경로</a>
-<a href="subfolder/pathEx1.jsp">상대경로</a>
+<jsp:include page="footerEx1.jsp"></jsp:include>
 </body>
 </html>
