@@ -1,5 +1,8 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ page import = "java.util.*" %>
+<%@ page import="chap07.User" %>
+<% request.setCharacterEncoding("UTF-8"); %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,8 +14,13 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h1>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda ad porro neque dignissimos sit nesciunt provident officia nisi dicta omnis adipisci ratione soluta minima cum tempore explicabo odit corporis quasi.</h1>
+<%
+User u = (User) request.getAttribute("user");
+%>
+
+이름: <%=u.getName() %> <br />
+주소: <%=u.getAddress() %> <br />
+나이: <%= u.getAge() %> <br />
+
 </body>
 </html>
-
-
