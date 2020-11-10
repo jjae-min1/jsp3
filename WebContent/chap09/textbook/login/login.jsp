@@ -1,7 +1,18 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import = "java.util.*" %>
+<%@ page import = "chap09.*" %>
 <% request.setCharacterEncoding("UTF-8"); %>
+
+<%
+String id = request.getParameter("id");
+String password = request.getParameter("password");
+
+if(id.equals(password)){
+	response.addCookie(Cookies.createCookie("AUTH", id, "/", 60));
+
+%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,25 +24,23 @@
 <title>Insert title here</title>
 </head>
 <body>
-<ul>
-<%
-Map<String, Integer> map = (Map<String, Integer>) session.getAttribute("map");
+로그인에 성공했습니다.
+</body>
+</html>
 
-if(map != null && map.size() > 0){
-	for(Map.Entry<String, Integer> entry : map.entrySet()){
-%>
-	<li><%= entry.getKey() %> : <%= entry.getValue() %></li>
-<%		
-	}
+<%
 }else{
 %>
-	<li>비어있음</li>
-<%	
+	<script>alert("로그인에 실패했습니다."); history.go(-1);</script>
+<%
 }
 
 %>
 
 
-</ul>
-</body>
-</html>
+
+
+
+
+
+

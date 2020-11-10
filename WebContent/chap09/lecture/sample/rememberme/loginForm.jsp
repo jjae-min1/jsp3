@@ -13,25 +13,13 @@
 <title>Insert title here</title>
 </head>
 <body>
-<ul>
-<%
-Map<String, Integer> map = (Map<String, Integer>) session.getAttribute("map");
 
-if(map != null && map.size() > 0){
-	for(Map.Entry<String, Integer> entry : map.entrySet()){
-%>
-	<li><%= entry.getKey() %> : <%= entry.getValue() %></li>
-<%		
-	}
-}else{
-%>
-	<li>비어있음</li>
-<%	
-}
+<form action="loginProcess.jsp" method="post">
+id : <input type="text" name="id"/> <br />
+pw : <input type="password" name="pw" /> <br />
+<input type="checkbox" name="remember" value="on"/> remember me <br />
+<input type="submit" value="login" />
+</form>
 
-%>
-
-
-</ul>
 </body>
 </html>

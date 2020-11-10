@@ -2,6 +2,16 @@
     pageEncoding="UTF-8"%>
 <%@ page import = "java.util.*" %>
 <% request.setCharacterEncoding("UTF-8"); %>
+
+<%
+Cookie cookie = new Cookie("mycookie2", "mycookie2-path");
+cookie.setPath("/myjsp3/chap09");
+/* setPath 안에 선언한 하위경로에서 요청시 응답객체에 cookie를 넣어서 보냄 */
+response.addCookie(cookie);
+
+cookie.setHttpOnly(true);
+/* jsp에선 읽지 못하고 http에서만 읽을 수 있게 설정 */
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,25 +23,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-<ul>
-<%
-Map<String, Integer> map = (Map<String, Integer>) session.getAttribute("map");
 
-if(map != null && map.size() > 0){
-	for(Map.Entry<String, Integer> entry : map.entrySet()){
-%>
-	<li><%= entry.getKey() %> : <%= entry.getValue() %></li>
-<%		
-	}
-}else{
-%>
-	<li>비어있음</li>
-<%	
-}
+<h1>쿠키 path랑 포함</h1>
 
-%>
-
-
-</ul>
 </body>
 </html>

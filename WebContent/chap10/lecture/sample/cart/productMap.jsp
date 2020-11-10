@@ -13,9 +13,9 @@
 <title>Insert title here</title>
 </head>
 <body>
-<%
+<% 
 String food = request.getParameter("food");
-Map<String,Integer> map = new HashMap<>();
+Map<String, Integer> map = new HashMap<>();
 Object o = session.getAttribute("map");
 
 if(o != null){
@@ -23,34 +23,27 @@ if(o != null){
 }
 
 session.setAttribute("map", map);
-if(food != null && map.size() > 0){
-	if(map.containsKey(food)){
-		map.put(food, map.get(food) + 1);
-	}else{
-		map.put(food, 1);
-	}
-	
+
+if(food != null && map.containsKey(food)){
+	map.put(food, map.get(food) + 1);
 }else if(food != null){
 	map.put(food, 1);
 }
-
 
 %>
 
 <form action="" method="post">
 <select name="food" id="">
-	<option value="water">물</option>
 	<option value="pizza">피자</option>
-	<option value="burger">버거</option>
-	<option value="cheeze">치즈</option>
-	<option value="chicken">치킨</option>
+	<option value="water">물</option>
+	<option value="banana">바나나</option>
+	<option value="apple">사과</option>
+	<option value="orange">오렌지</option>
 </select>
-<input type="submit" value="장바구니담기" />
+<input type="submit" value="장바구니 담기"/> <br />
 </form>
-장바구니 물품 수 : <%= map.size() %> <br />
-<a href="cartMap.jsp">장바구니보기</a> <br />
 
-
-
+장바구니 물건 수 : <%= map.size() %> <br />
+<a href="cartMap.jsp">장바구니 보기</a>
 </body>
 </html>

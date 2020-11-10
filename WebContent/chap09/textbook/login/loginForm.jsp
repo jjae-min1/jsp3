@@ -13,25 +13,10 @@
 <title>Insert title here</title>
 </head>
 <body>
-<ul>
-<%
-Map<String, Integer> map = (Map<String, Integer>) session.getAttribute("map");
-
-if(map != null && map.size() > 0){
-	for(Map.Entry<String, Integer> entry : map.entrySet()){
-%>
-	<li><%= entry.getKey() %> : <%= entry.getValue() %></li>
-<%		
-	}
-}else{
-%>
-	<li>비어있음</li>
-<%	
-}
-
-%>
-
-
-</ul>
+<form action="login.jsp">
+id : <input type="text" name="id" size="10" />
+pw : <input type="password" name="password" size="10"/>
+<input type="submit" value="login" />
+</form>
 </body>
 </html>

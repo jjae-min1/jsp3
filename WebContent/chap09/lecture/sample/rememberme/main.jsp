@@ -13,25 +13,13 @@
 <title>Insert title here</title>
 </head>
 <body>
-<ul>
 <%
-Map<String, Integer> map = (Map<String, Integer>) session.getAttribute("map");
-
-if(map != null && map.size() > 0){
-	for(Map.Entry<String, Integer> entry : map.entrySet()){
-%>
-	<li><%= entry.getKey() %> : <%= entry.getValue() %></li>
-<%		
-	}
-}else{
-%>
-	<li>비어있음</li>
-<%	
+String user = (String) session.getAttribute("user");
+if(user == null){
+	user = "guest";
 }
 
 %>
-
-
-</ul>
+<h1><%= user %> 님 안녕하세요</h1>
 </body>
 </html>

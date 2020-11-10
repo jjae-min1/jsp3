@@ -1,11 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import = "java.util.*" %>
-<% request.setCharacterEncoding("UTF-8"); %>
+<%@ page import="java.util.*" %>
+<%@ page import="java.net.*" %>
+<% request.setCharacterEncoding("utf-8"); %>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
+<meta charset="UTF-8">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
@@ -13,25 +14,32 @@
 <title>Insert title here</title>
 </head>
 <body>
-<ul>
+쿠키 목록 <br />
 <%
-Map<String, Integer> map = (Map<String, Integer>) session.getAttribute("map");
-
-if(map != null && map.size() > 0){
-	for(Map.Entry<String, Integer> entry : map.entrySet()){
+Cookie[] cookies = request.getCookies();
+if(cookies != null && cookies.length > 0){
+	for(Cookie cookie : cookies){
 %>
-	<li><%= entry.getKey() %> : <%= entry.getValue() %></li>
+	name : <%= cookie.getName() %> <br /> 
+	value : <%= URLDecoder.decode(cookie.getValue(), "utf-8") %> <br />
 <%		
 	}
+	
 }else{
 %>
-	<li>비어있음</li>
-<%	
+	쿠키가 없습니다.
+<%		
+	
 }
 
 %>
 
-
-</ul>
 </body>
 </html>
+
+
+
+
+
+
+

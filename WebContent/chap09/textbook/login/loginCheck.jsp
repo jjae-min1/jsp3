@@ -1,7 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import = "java.util.*" %>
+<%@ page import = "chap09.*" %>
 <% request.setCharacterEncoding("UTF-8"); %>
+
+<%
+Cookies cookies = new Cookies(request);
+%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,25 +19,17 @@
 <title>Insert title here</title>
 </head>
 <body>
-<ul>
 <%
-Map<String, Integer> map = (Map<String, Integer>) session.getAttribute("map");
-
-if(map != null && map.size() > 0){
-	for(Map.Entry<String, Integer> entry : map.entrySet()){
+if(cookies.exists("AUTH")){
 %>
-	<li><%= entry.getKey() %> : <%= entry.getValue() %></li>
-<%		
-	}
+id "<%= cookies.getValue("AUTH") %>" 로 로그인 한 상태
+
+<%
 }else{
 %>
-	<li>비어있음</li>
-<%	
+로그인하지 않은 상태
+<%
 }
-
 %>
-
-
-</ul>
 </body>
 </html>
