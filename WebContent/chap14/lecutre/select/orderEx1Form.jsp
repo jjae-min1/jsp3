@@ -1,12 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import = "java.util.*" %>
-<%@ page import = "chap14.*" %>
 <% request.setCharacterEncoding("UTF-8"); %>
-
-<%
-List<String> list = EmployeeDao.listEmployeeName();
-%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,16 +13,20 @@ List<String> list = EmployeeDao.listEmployeeName();
 <title>Insert title here</title>
 </head>
 <body>
-<h1>직원 리스트</h1>
-<ul>
-<%
-for(String name : list){
-%>
-	<li><%= name%></li>
-<%	
-}
-%>
-</ul>
+<form action="orderEx1View.jsp">
+이름 <input type="text" name="name" />
+정렬 
+<select name="order" id="">
+	<option value="1">안함</option>
+	<option value="2">오름차순</option>
+	<option value="3">내림차순</option>
+</select>
+<br />
+
+<input type="submit" value="검색" />
+</form>
+
+
 
 
 </body>

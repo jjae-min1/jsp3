@@ -5,8 +5,14 @@
 <% request.setCharacterEncoding("UTF-8"); %>
 
 <%
-List<String> list = EmployeeDao.listEmployeeName();
+String name = request.getParameter("name");
+if(name == null){
+	name = "";
+}
+
+List<String> list = EmployeeDao.getNameLike(name);
 %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,17 +24,27 @@ List<String> list = EmployeeDao.listEmployeeName();
 <title>Insert title here</title>
 </head>
 <body>
-<h1>직원 리스트</h1>
-<ul>
+<h1>검색된 이름</h1>
 <%
-for(String name : list){
+if(list.size()>0){
+	
+%>	
+<ul>
+	<%
+	for(String n : list){
+	%>
+		<li><%= n %></li> <br />
+	<%
+	}
+	%>
+	</ul>
+	
+<% 	
+}else{
 %>
-	<li><%= name%></li>
-<%	
+	<h1>목록 없음</h1>
+<%
 }
-%>
-</ul>
-
-
+ %>
 </body>
 </html>

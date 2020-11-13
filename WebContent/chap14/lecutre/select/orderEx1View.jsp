@@ -3,10 +3,35 @@
 <%@ page import = "java.util.*" %>
 <%@ page import = "chap14.*" %>
 <% request.setCharacterEncoding("UTF-8"); %>
-
 <%
-List<String> list = EmployeeDao.listEmployeeName();
+String name = request.getParameter("name");
+String order = request.getParameter("order");
+
+if(name == null){
+	name = "";
+}
+name = name.toUpperCase();
+if(order == null){
+	order ="1";
+}
+
+List<String> list = null;
+
+
+switch (order){
+case "1" :
+	list = EmployeeDao.getNameLike(name);
+	break;
+case "2" :
+	list = EmployeeDao.getNameLike(name, true);
+	break;
+case "3" :
+	list = EmployeeDao.getNameLike(name, false);
+}
+
 %>
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,17 +43,22 @@ List<String> list = EmployeeDao.listEmployeeName();
 <title>Insert title here</title>
 </head>
 <body>
-<h1>직원 리스트</h1>
-<ul>
 <%
-for(String name : list){
+if(list.size()> 0){
+	for(String n : list){
+		
+	
 %>
-	<li><%= name%></li>
-<%	
+		<ul>
+			<li><%= n%></li>
+		</ul>
+<%
+	}
+}else{
+%>
+	<li>검색결과 없음</li>
+<%
 }
 %>
-</ul>
-
-
 </body>
 </html>

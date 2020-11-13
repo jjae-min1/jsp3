@@ -1,12 +1,31 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import = "java.util.*" %>
-<%@ page import = "chap14.*" %>
+<%@ page import = "java.sql.*" %>
 <% request.setCharacterEncoding("UTF-8"); %>
 
 <%
-List<String> list = EmployeeDao.listEmployeeName();
+String sql = "SELECT hiredate FROM employee WHERE eno = 7369";
+String url = "jdbc:oracle:thin:@localhost:1521:orcl";
+String id = "c##mydbms";
+String pw = "admin";
+java.sql.Date hiredate = null;
+Class.forName("oracle.jdbc.driver.OracleDriver");
+try(
+	Connection con = DriverManager.getConnection(url, id, pw);
+	Statement stmt = con.createStatement();
+		){
+	ResultSet rs = stmt.executeQuery(sql);
+	
+	while(rs.next()){
+		hiredate = rs.getDate("hiredate");
+	}
+}catch(Exception e){
+	e.printStackTrace();
+}
+
 %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,17 +37,7 @@ List<String> list = EmployeeDao.listEmployeeName();
 <title>Insert title here</title>
 </head>
 <body>
-<h1>직원 리스트</h1>
-<ul>
-<%
-for(String name : list){
-%>
-	<li><%= name%></li>
-<%	
-}
-%>
-</ul>
-
+<h1><%= hiredate %></h1>
 
 </body>
 </html>
