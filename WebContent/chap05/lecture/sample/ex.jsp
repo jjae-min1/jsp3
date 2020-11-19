@@ -2,6 +2,13 @@
     pageEncoding="UTF-8"%>
 <%@ page import = "java.util.*" %>
 <% request.setCharacterEncoding("UTF-8"); %>
+
+<%
+List<String> list = new ArrayList<>();
+for(int i = 0; i < 3; i++){
+	list.add("String"+i);
+}
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,11 +20,14 @@
 <title>Insert title here</title>
 </head>
 <body>
+<ul>
+<%for(String s : list){ %>
 
-<form action="ex1.jsp?id=555">
-<input type="text" name="id" />
-<input type="submit" value="1"/>
-</form>
+	<li><%= s %></li>
+<%
+}
+%>
 
+</ul>
 </body>
 </html>
