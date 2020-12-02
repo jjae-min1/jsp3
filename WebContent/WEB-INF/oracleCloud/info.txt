@@ -3,6 +3,9 @@ https://u9aa7lbd1byf6to-mydb501.adb.ap-seoul-1.oraclecloudapps.com/ords/mydb11/_
 
 pw
 adminAdmin12
+String id = "mydb00";
+url = "jdbc:oracle:thin:@mydb501_high?TNS_ADMIN=C:\\Users\\wuw93\\Documents\\Wallet_mydb501";
+
 
 sample tables
 https://git.io/JkhFi
